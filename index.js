@@ -23,7 +23,7 @@ Promise = require('bluebird'); // eslint-disable-line no-global-assign
 mongoose.Promise = Promise;
 
 // connect to mongo db
-const mongoUri = 'mongodb://127.0.0.1/textMeaningDB';
+const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1/textMeaningDB';
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
