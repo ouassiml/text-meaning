@@ -1,6 +1,7 @@
-FROM node:latest
+FROM node:lts-alpine
 WORKDIR /opt/app
 COPY package.json .
-RUN npm install
-COPY . .
-CMD ["npm", "run", "build", "&&", "node", "dist/index.js"]
+RUN npm install --only=production
+COPY --chown=node:node . .
+USER node
+CMD ["npm", "run", "start"]

@@ -1,4 +1,3 @@
-
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -6,17 +5,16 @@ const mongoose = require('mongoose');
 
 import route from './Routes/textRoutes.js';
 
-
 const app = express();
-const port = process.env.PORT||6000;
+const port = process.env.PORT || 6000;
 
 let corsOptions = {
-  origin: '*'
-}
+  origin: '*',
+};
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api',route);
+app.use('/api', route);
 Promise = require('bluebird'); // eslint-disable-line no-global-assign
 
 // plugin bluebird promise in mongoose
@@ -36,5 +34,5 @@ mongoose.connection.on('error', () => {
 });
 
 app.listen(port, () => {
-    console.log('App started on ', port);
+  console.log('App started on ', port);
 });
